@@ -13,6 +13,11 @@ export const logout = () => {
     const res = axios.delete(url + 'auth/logout');
     return res;
 }
+// verify
+export const verifyUser = () => {
+    var res = axios.get(url + 'auth/verify')
+    return res;
+}
 /*----------------------------------------*/
 
 
