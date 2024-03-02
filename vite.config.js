@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:8080',
-      '/assets': 'http://localhost:8080',
+      '/api': 'https://labreport-furkancan2107-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
+     
     }
   },
   resolve: {
