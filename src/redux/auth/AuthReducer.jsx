@@ -44,7 +44,6 @@ export const authReducer = createSlice({
     extraReducers: (builder) => {
         builder.addCase(signIn.fulfilled, (state, action) => {
             console.log(action.payload);
-            console.log(action.payload.user.role)
             if (action.payload != null && action.payload?.token != null) {
                 state.role = action.payload.user.role;
                 localStorage.setItem('role', state.role);
