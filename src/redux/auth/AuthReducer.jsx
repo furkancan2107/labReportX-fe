@@ -43,13 +43,15 @@ export const authReducer = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(signIn.fulfilled, (state, action) => {
+
             console.log(action.payload);
+
             if (action.payload != null && action.payload?.token != null) {
                 state.role = action.payload.user.role;
                 localStorage.setItem('role', state.role);
             }
         }).addCase(validate.fulfilled, (state, action) => {
-            console.log(action.payload);
+            
              if (action.payload != null && action.payload?.role != null) {
                 state.role = action.payload.role;
                 localStorage.setItem('role', state.role);
