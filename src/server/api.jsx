@@ -74,7 +74,7 @@ export const deleteWorker = (id) => {
 
 /*  patient controller */
 // save
-export const patientlRegister = (body) => {
+export const patientRegister = (body) => {
     const res = axios.post(url + 'patient/save',body);
     return res;
 }

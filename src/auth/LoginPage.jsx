@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { TextField, Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate,Link } from 'react-router-dom'
-import { signIn } from '../redux/auth/AuthReducer'
+import { clearMessage, signIn } from '../redux/auth/AuthReducer'
 
 export default function () {
   const [body, setBody] = useState({ identificationNumber: null, password: null })
+  
   const dispatch = useDispatch();
-  const { role } = useSelector((store) => store.auth);
+  const { role,message } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const inputChange = (event) => {
+    dispatch(clearMessage());
     const name = event.target.name;
     const value = event.target.value;
     setBody({ ...body, [name]: value })
+    
   }
    const loginButton = async() => {
      await dispatch(signIn(body));
@@ -30,6 +33,7 @@ export default function () {
   },[role])
   return (
     <div>
+      <div className={message!=null ? 'error-m' : 'e'} >{message}</div>
       <form className='login-form'>
         <h1>Giriş Yap</h1>
         <div className='inputDiv'>

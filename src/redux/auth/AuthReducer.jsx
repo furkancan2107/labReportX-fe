@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { login, verifyUser } from "../../server/api";
+import { login, logout, verifyUser } from "../../server/api";
 
 const initialState = {
     id: null,
     token: null,
     identificationNumber: null,
-    role: null,    
+    role: null,   
+    message: null
+    
 }
 // login
 export const signIn = createAsyncThunk(
@@ -21,6 +23,18 @@ export const signIn = createAsyncThunk(
     }
 )
 // logout
+export const logoutUser = createAsyncThunk(
+    "auth/logout",
+    async () => {
+        var response;
+        await logout().then((res) => {
+            response = res.data;
+        }).catch((err) => {
+            response = err.response.data;
+        })
+        return response;
+    }
+)
 
 // verify user
 export const validate = createAsyncThunk(
@@ -39,12 +53,17 @@ export const authReducer = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        
+        clearMessage: (state)=> {
+            state.message = null;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(signIn.fulfilled, (state, action) => {
 
             console.log(action.payload);
+            if (action.payload != null && action.payload?.message != null) {
+                state.message = action.payload.message;
+            }
 
             if (action.payload != null && action.payload?.token != null) {
                 state.role = action.payload.user.role;
@@ -56,12 +75,19 @@ export const authReducer = createSlice({
                 state.role = action.payload.role;
                 localStorage.setItem('role', state.role);
             }
+        }).addCase(logoutUser.fulfilled, (state, action) => {
+            console.log(action.payload)
+           
+                localStorage.setItem("role", null);
+             
+                
+             
         })
     }
     
 }
 );
-
+export const { clearMessage } = authReducer.actions;
 export default authReducer.reducer;
 
 
