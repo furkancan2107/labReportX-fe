@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { patientRegister } from "../../server/api";
+import { patientList, patientRegister } from "../../server/api";
 
 const initialState = {
+    patients : [],
     status: null,
     errors: {
         identificationNumber: null,
@@ -13,7 +14,7 @@ const initialState = {
 }
 // kayıt 
 export const savePatient = createAsyncThunk(
-    "auth/login",
+    "patient/save",
     async (body) => {
         var response;
         await patientRegister(body).then((res) => {
@@ -24,7 +25,19 @@ export const savePatient = createAsyncThunk(
         return response;
     }
 )
-
+// hastaların listesini getir
+export const getPatientList = createAsyncThunk(
+    "patient/list",
+    async () => {
+        var response;
+        await patientList().then((res) => {
+            response = res.data;
+        }).catch((err) => {
+            response = err.response.data;
+        })
+        return response;
+    }
+)
 
 export const patientReducer = createSlice({
     name: 'patient',
@@ -48,6 +61,9 @@ export const patientReducer = createSlice({
             if (action.payload != null && action.payload?.status == 200) {
                 state.status = 200;
             }
+        }).addCase(getPatientList.fulfilled, (state, action) => {
+            state.patients = action.payload;
+            console.log(state.patient);
         })
     }
     

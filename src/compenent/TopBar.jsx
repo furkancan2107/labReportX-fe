@@ -36,8 +36,8 @@ const TopBar = () => {
        role=='ROLE_WORKER' ? 
        <AppBar >
         <Toolbar className='toolbar'>
-          <Link >Hastalar</Link>
-          <Link>Raporlar</Link>
+          <Link to={"/worker-patients"}>Hastalar</Link>
+          <Link to={"/worker-reports"}>Raporlar</Link>
           <Link onClick={logoutClick}>Çıkış Yap</Link>
         </Toolbar>
       </AppBar>

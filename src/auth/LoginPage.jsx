@@ -6,6 +6,7 @@ import { clearMessage, signIn } from '../redux/auth/AuthReducer'
 
 export default function () {
   const [body, setBody] = useState({ identificationNumber: null, password: null })
+  const lRole=localStorage.getItem('role')
   
   const dispatch = useDispatch();
   const { role,message } = useSelector((store) => store.auth);
@@ -22,17 +23,20 @@ export default function () {
       
   }
   useEffect(() => {
-    console.log(role);
-    switch (role) {
+    
+    const switchRole = role != null ? role : lRole;
+    
+    switch (switchRole) {
         case 'ROLE_ADMIN': navigate("/admin-page"); break
         case 'ROLE_PATIENT': navigate("/patient-page"); break
         case 'ROLE_WORKER': navigate("/worker-page"); break
         default: navigate("/"); 
     }
    
-  },[role])
+  },[role,lRole,dispatch])
   return (
     <div>
+      
       <div className={message!=null ? 'error-m' : 'e'} >{message}</div>
       <form className='login-form'>
         <h1>Giriş Yap</h1>

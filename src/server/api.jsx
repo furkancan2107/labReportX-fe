@@ -42,7 +42,7 @@ export const deleteHospital = (id) => {
 
 /*  worker controller */
 // save
-export const workerSave = (body,hospitalId) => {
+export const workerSave = (hospitalId,body) => {
     const res = axios.post(url + 'worker/save/'+hospitalId,body);
     return res;
 }

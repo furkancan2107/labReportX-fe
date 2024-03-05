@@ -14,6 +14,8 @@ import HospitalsPage from './pages/admin/HospitalsPage'
 import WorkersPage from './pages/admin/WorkersPage'
 import AddWorkerPage from './pages/admin/AddWorkerPage'
 import RegisterHospitalPage from './pages/admin/RegisterHospitalPage'
+import ReportsPage from './pages/pattient/ReportsPage'
+import CreateReport from './pages/pattient/CreateReport'
 
 
 function App() {
@@ -21,7 +23,13 @@ function App() {
   const  lRole  = localStorage.getItem('role');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-useEffect(() => {
+  useEffect(() => {
+  const authTokenCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('auth-token='));
+    const authToken = authTokenCookie ? authTokenCookie.split('=')[1] : null;
+    if (authToken == null) {
+      localStorage.setItem('role', null);
+      
+    }
   console.log("çalıştı");
   const fetchData = async () => {
     try {
@@ -59,8 +67,12 @@ lRole!=null ? <TopBar></TopBar> : <></>
         <Route path='/patient-register' element={<RegisterPatientPage />}></Route>
         <Route path='/admin-hospitals' element={<HospitalsPage />}></Route>
         <Route path='/admin-workers' element={<WorkersPage />}></Route>
+        <Route path='/worker-patients' element={<PatientPage></PatientPage>}></Route>
+        <Route path='/worker-reports' element={<ReportsPage />}></Route>
+        
         <Route path='/add-workers' element={<AddWorkerPage />}></Route>
-        <Route path='/add-hospital' element={<RegisterHospitalPage/>}></Route>
+        <Route path='/add-hospital' element={<RegisterHospitalPage />}></Route>
+        <></>
         <Route path='/admin-page' element={<AdminPage />}></Route>
         <Route path='/patient-page' element={<PatientPage />}></Route>
         <Route path='/worker-page' element={<WorkerPage/>}></Route>

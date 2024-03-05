@@ -42,3 +42,25 @@ justify-content: space-around;
     background-color: crimson;
     margin-top: 2%;
 }
+#hospitalDiv{
+    display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+       
+}
+.avatarDiv {
+    margin-right: 10px;
+    /* Avatar ile diğer içerikler arasına boşluk eklemek için */
+}
+
+.cardDiv {
+    flex-grow: 1; 
+}
+.cardDiv-r{
+    flex-grow: 1;
+    margin-right: 100px;
+}
+#buttonDiv{
+    margin-right:10px ;
+}

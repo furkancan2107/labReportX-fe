@@ -10,7 +10,7 @@ const RegisterPatientPage = () => {
   const navigate = useNavigate();
   const { status, errors } = useSelector((store) => store.patient);
   const [body, setBody] = useState({
-  identificationNumber : null,name : null,lastName : null,firstName : null
+  identificationNumber : null,name : null,lastName : null,password : null
   });
   const inputChange = (event) => {
     dispatch(clearErrors());

@@ -1,11 +1,12 @@
 import React from 'react'
 import TopBar from '../compenent/TopBar'
+import HospitalsPage from './admin/HospitalsPage'
 
 const AdminPage = () => {
   return (
     <div>
       
-      admin
+      <HospitalsPage/>
     </div>
   )
 }
