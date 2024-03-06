@@ -34,6 +34,10 @@ Bu proje, rapor oluşturma ve yönetme işlevselliğine sahip bir web uygulamas�
 
 5. Tarayıcınızda [http://localhost:5173](http://localhost:5173) adresine gidin.
 
+
+## Video
+[Video](https://www.youtube.com/watch?v=J2l7zejry_M)
+
 ## Proje Yapısı
 
 - **src/components**: Proje bileşenlerini içerir.
