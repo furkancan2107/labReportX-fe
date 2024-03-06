@@ -36,14 +36,14 @@ const TopBar = () => {
        role=='ROLE_WORKER' ? 
        <AppBar >
         <Toolbar className='toolbar'>
-          <Link to={"/worker-patients"}>Hastalar</Link>
+          <Link to={"/worker-page"}>Hastalar</Link>
           <Link to={"/worker-reports"}>Raporlar</Link>
           <Link onClick={logoutClick}>Çıkış Yap</Link>
         </Toolbar>
       </AppBar>
     : role=="ROLE_PATIENT" ?  <AppBar >
         <Toolbar className='toolbar'>
-          <Link>Raporlar</Link>
+          <Link to={'/patient-page'}>Raporlar</Link>
               <Link></Link>
               <Link></Link>
               <Link></Link>

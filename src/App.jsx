@@ -12,10 +12,13 @@ import { useNavigate,Link } from 'react-router-dom'
 import TopBar from './compenent/TopBar'
 import HospitalsPage from './pages/admin/HospitalsPage'
 import WorkersPage from './pages/admin/WorkersPage'
-import AddWorkerPage from './pages/admin/AddWorkerPage'
+
 import RegisterHospitalPage from './pages/admin/RegisterHospitalPage'
-import ReportsPage from './pages/pattient/ReportsPage'
-import CreateReport from './pages/pattient/CreateReport'
+import ReportsPage from './pages/worker/ReportsPage'
+import AddWorkerPage from './pages/admin/AddWorkerPage'
+import CreateReport from './pages/worker/CreateReport'
+import ReportsForPatientsPage from './pages/patient/ReportsForPatientsPage'
+
 
 
 function App() {
@@ -71,7 +74,9 @@ lRole!=null ? <TopBar></TopBar> : <></>
         <Route path='/worker-reports' element={<ReportsPage />}></Route>
         
         <Route path='/add-workers' element={<AddWorkerPage />}></Route>
+        <Route path='/create-report' element={<CreateReport></CreateReport>}></Route>
         <Route path='/add-hospital' element={<RegisterHospitalPage />}></Route>
+        <Route path='/reports-patient' element={<ReportsForPatientsPage />}></Route>
         <></>
         <Route path='/admin-page' element={<AdminPage />}></Route>
         <Route path='/patient-page' element={<PatientPage />}></Route>

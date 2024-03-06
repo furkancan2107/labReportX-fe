@@ -67,7 +67,9 @@ export const authReducer = createSlice({
 
             if (action.payload != null && action.payload?.token != null) {
                 state.role = action.payload.user.role;
+                state.id = action.payload.user.id;
                 localStorage.setItem('role', state.role);
+                localStorage.setItem('userId',state.id);
             }
         }).addCase(validate.fulfilled, (state, action) => {
             

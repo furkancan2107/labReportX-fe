@@ -75,6 +75,7 @@ export const workerReducer = createSlice({
                 state.message = action.payload.message;
             }
             if (action.payload != null && action.payload?.status == 200) {
+                
                 alert("Çalışan Eklendi");
             }
         }).addCase(getWorkerList.fulfilled, (state, action) => {

@@ -61,14 +61,50 @@ export const deleteWorker = (id) => {
 
 /*  report controller */
 // update report
+export const updateReport = (id,body) => {
+    const res = axios.put(url + 'report/update/'+id,body);
+    return res;
+}
 // save
+export const saveReport = (workerId,patientId,body) => {
+    const res = axios.post(url + 'report/save/'+workerId+"/"+patientId,body);
+    return res;
+}
 // get report
+export const getReport = (id) => {
+    const res = axios.get(url + 'report/'+id);
+    return res;
+}
 // worker sort report
+export const workerSortReport = (id) => {
+    const res = axios.get(url + 'report/sort/worker/'+id);
+    return res;
+}
 // patient sort report
+export const patientSortReport = (id) => {
+    const res = axios.get(url + 'report/sort/patient/'+id);
+    return res;
+}
 // search report
+export const searchReport = (value) => {
+    const res = axios.get(url + 'report/search/'+value);
+    return res;
+}
 // report list for worker
+export const reportListForWorker = (id) => {
+    const res = axios.get(url + 'report/list/worker/'+id);
+    return res;
+}
 // report list for patient
+export const reportListForPatient = (id) => {
+    const res = axios.get(url + 'report/list/patient/'+id);
+    return res;
+}
 // delete report
+export const deleteReport = (id) => {
+    const res = axios.delete(url + 'report/delete/'+id);
+    return res;
+}
 
 /*--------------------------------------------------------------------------------------*/
 
